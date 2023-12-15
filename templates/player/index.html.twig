@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Player index{% endblock %}
+
+{% block body %}
+    <h1>Player index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Avatar</th>
+                <th>Pv</th>
+                <th>PvMax</th>
+                <th>Mana</th>
+                <th>ManaMax</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Dodge</th>
+                <th>IsAvailable</th>
+                <th>IsDead</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.id }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.avatar }}</td>
+                <td>{{ player.pv }}</td>
+                <td>{{ player.pvMax }}</td>
+                <td>{{ player.mana }}</td>
+                <td>{{ player.manaMax }}</td>
+                <td>{{ player.attack }}</td>
+                <td>{{ player.defense }}</td>
+                <td>{{ player.dodge }}</td>
+                <td>{{ player.isAvailable ? 'Yes' : 'No' }}</td>
+                <td>{{ player.isDead ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_player_show', {'id': player.id}) }}">show</a>
+                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_player_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Player{% endblock %}
+
+{% block body %}
+    <h1>Player</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ player.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ player.name }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ player.avatar }}</td>
+            </tr>
+            <tr>
+                <th>Pv</th>
+                <td>{{ player.pv }}</td>
+            </tr>
+            <tr>
+                <th>PvMax</th>
+                <td>{{ player.pvMax }}</td>
+            </tr>
+            <tr>
+                <th>Mana</th>
+                <td>{{ player.mana }}</td>
+            </tr>
+            <tr>
+                <th>ManaMax</th>
+                <td>{{ player.manaMax }}</td>
+            </tr>
+            <tr>
+                <th>Attack</th>
+                <td>{{ player.attack }}</td>
+            </tr>
+            <tr>
+                <th>Defense</th>
+                <td>{{ player.defense }}</td>
+            </tr>
+            <tr>
+                <th>Dodge</th>
+                <td>{{ player.dodge }}</td>
+            </tr>
+            <tr>
+                <th>IsAvailable</th>
+                <td>{{ player.isAvailable ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>IsDead</th>
+                <td>{{ player.isDead ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_player_index') }}">back to list</a>
+
+    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
+
+    {{ include('player/_delete_form.html.twig') }}
+{% endblock %}
